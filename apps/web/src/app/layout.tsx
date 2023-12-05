@@ -11,6 +11,7 @@ import { getCurrentSession } from '@mcsph/supabase/ops/user';
 import { Session } from '@mcsph/supabase/types';
 
 import '@mcsph/ui/globals.css';
+import { serverClient } from '@mcsph/supabase/lib/server';
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),

@@ -1,4 +1,3 @@
-// ProductDetailPage.tsx
 "use client"
 import { useEffect, useState } from 'react';
 import { fetchProductById, Product } from 'data/products';
@@ -15,7 +14,7 @@ export default function ProductDetailPage({ id }: ProductDetailPageProps) {
       try {
         const response = await fetch(`http://localhost:3001/products/${id}`);
         const data = await response.json();
-        console.log('API Response:', data); // Log the API response
+        console.log('API Response:', data); 
         setProduct(data);
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -24,7 +23,7 @@ export default function ProductDetailPage({ id }: ProductDetailPageProps) {
   
     fetchData();
   
-    console.log('Product State:', product); // Move here
+    console.log('Product State:', product);
   }, [id, product]);
   
 
