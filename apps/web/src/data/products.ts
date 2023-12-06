@@ -1,4 +1,3 @@
-// products.ts
 "use client"
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { useEffect, useState } from 'react';

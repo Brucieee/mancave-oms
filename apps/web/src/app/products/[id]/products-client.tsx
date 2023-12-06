@@ -1,5 +1,4 @@
 "use client"
-// products-client.tsx
 import React, { useEffect, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { fetchProductById, fetchProducts, Product } from 'data/products';
@@ -67,13 +66,12 @@ function ProductsClientComponent() {
       const existingItem = cart.find((item) => item.id === product.id);
 
       if (existingItem) {
-        // Update quantity if the item is already in the cart
         const updatedCart = cart.map((item) =>
           item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
         );
         setCart(updatedCart);
       } else {
-        // Add new item to the cart
+
         setCart([...cart, { id: product.id, name: product.name, image_url: product.image_url, price: product.price, quantity }]);
       }
 
@@ -86,19 +84,14 @@ function ProductsClientComponent() {
   };
 
   const proceedToCheckout = () => {
-    // Handle the logic for proceeding to checkout
-    // For simplicity, this example just closes the sheet
     closeSheet();
   };
 
-  // Function to handle quantity changes in the cart
   const handleQuantityChange = (productId: number, newQuantity: number) => {
-    // Find the item in the cart by productId
     const updatedCart = cart.map((item) =>
       item.id === productId ? { ...item, quantity: newQuantity } : item
     );
 
-    // Update the cart state
     setCart(updatedCart);
   };
 
@@ -157,9 +150,9 @@ function ProductsClientComponent() {
         </div>
       )}
 
-      {/* Cart Sheet */}
-      <Sheet open={isSheetOpen}>
-        <SheetContent>
+//Cart Sheet
+    <Sheet open={isSheetOpen}>
+        <SheetContent style={{ width: '50%', maxWidth: '500px' }}>
           <SheetHeader>
             <SheetTitle>Shopping Cart</SheetTitle>
             <Separator style={{ margin: '16px 0' }} />
@@ -170,9 +163,9 @@ function ProductsClientComponent() {
               <div key={item.id} style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
                   <img src={item.image_url} alt={item.name} style={{ width: '50px', height: '50px', borderRadius: '8px', marginRight: '10px' }} />
-                  <div>
+                  <div style={{ flex: 1 }}>
                     <p>{item.name}</p>
-                    <p>Price: ₱{item.price.toFixed(2)}</p>
+                    <p>Price: ₱{(item.price * item.quantity).toFixed(2)}</p>
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
@@ -191,7 +184,6 @@ function ProductsClientComponent() {
             <Separator style={{ margin: '16px 0' }} />
           </SheetDescription>
           <SheetFooter>
-            {/* Proceed to Checkout Button */}
             <SheetClose asChild>
               <Button onClick={proceedToCheckout}>Proceed to Checkout</Button>
             </SheetClose>
@@ -200,6 +192,6 @@ function ProductsClientComponent() {
       </Sheet>
     </div>
   );
-}
+};
 
 export default ProductsClientComponent;

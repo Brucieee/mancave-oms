@@ -1,8 +1,7 @@
-// page.tsx
 import { Metadata } from 'next';
 import React from 'react';
 import LandingCarousel from './landing-client';
-import { Separator } from '@mcsph/ui/components/separator'; // Replace with the actual import from your library
+import { Separator } from '@mcsph/ui/components/separator';
 
 export const metadata: Metadata = {
   title: 'About Us | Man Cave Supplies PH, Inc.',

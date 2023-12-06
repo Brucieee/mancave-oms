@@ -1,4 +1,3 @@
-// page.tsx
 import ProductsClientComponent from './products-client';
 
 function Page() {
