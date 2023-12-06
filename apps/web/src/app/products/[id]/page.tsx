@@ -1,11 +1,12 @@
-// [id].tsx
-import dynamic from 'next/dynamic';
-import { Metadata } from 'next';
+// page.tsx
+import ProductsClientComponent from './products-client';
 
-export const metadata: Metadata = {
-  title: 'Product Detail | Man Cave Supplies PH, Inc.',
-};
+function Page() {
+  return (
+    <div>
+      <ProductsClientComponent />
+    </div>
+  );
+}
 
-const DynamicProductDetailPage = dynamic(() => import('app/products/[id]/products-client'), { ssr: false });
-
-export default DynamicProductDetailPage;
+export default Page;
